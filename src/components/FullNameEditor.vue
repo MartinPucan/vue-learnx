@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h3>{{ firstName }} {{ lastName}}</h3>
+		<h3>{{ joinedName }}</h3>
 		<p>
 			<label>First name<br>
 				<input
@@ -36,11 +36,21 @@ export default {
 			default: 'John Doe'
 		}
 	},
+	computed: {
+		joinedName () {
+			return [this.firstName, this.lastName]
+					.filter(value => value !== '')
+					.join(' ')
+		}
+	},
 	watch: {
 		fullName: function (newValue) {
 			const [firstName = '', lastName = ''] = newValue.split(' ')
 			this.firstName = firstName
 			this.lastName = lastName
+		},
+		joinedName: function () {
+			this.$emit('nameChange', this.joinedName)
 		}
 	}
 }

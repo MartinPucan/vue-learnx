@@ -9,7 +9,10 @@
 				>
 			</label>
 		</p>
-		<FullNameEditor v-bind:fullName="fullName" />
+		<FullNameEditor
+				v-bind:fullName="fullName"
+				v-on:nameChange="handleNameChange"
+		/>
 	</div>
 </template>
 
@@ -20,7 +23,12 @@ export default {
 	components: { FullNameEditor },
 	data () {
 		return {
-			fullName: "Karel Gott"
+			fullName: "John Doe"
+		}
+	},
+	methods: {
+		handleNameChange (newName) {
+			this.fullName = newName
 		}
 	}
 }
