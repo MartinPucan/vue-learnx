@@ -9,7 +9,7 @@
 				>
 			</label>
 		</p>
-		<FullNameEditor />
+		<FullNameEditor v-bind:fullName="fullName" />
 	</div>
 </template>
 
@@ -20,7 +20,7 @@ export default {
 	components: { FullNameEditor },
 	data () {
 		return {
-			fullName: "CoSiZac"
+			fullName: "Karel Gott"
 		}
 	}
 }
