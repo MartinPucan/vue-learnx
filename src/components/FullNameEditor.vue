@@ -24,14 +24,14 @@
 export default {
 	name: "FullNameEditor",
 	data () {
-		const [firstName = '', lastName = ''] = this.fullName.split(' ')
+		const [firstName = '', lastName = ''] = this.value.split(' ')
 		return {
 			firstName,
 			lastName
 		}
 	},
 	props: {
-		fullName: {
+		value: {
 			type: String,
 			default: 'John Doe'
 		}
@@ -44,13 +44,13 @@ export default {
 		}
 	},
 	watch: {
-		fullName: function (newValue) {
+		value: function (newValue) {
 			const [firstName = '', lastName = ''] = newValue.split(' ')
 			this.firstName = firstName
 			this.lastName = lastName
 		},
 		joinedName: function () {
-			this.$emit('nameChange', this.joinedName)
+			this.$emit('input', this.joinedName)
 		}
 	}
 }
